@@ -10,7 +10,7 @@ def scrape_all():
 
     # Set up Splinter executable path and initialise headless Chrome browser
     executable_path = {'executable_path': ChromeDriverManager().install()}
-    browser = Browser('chrome', **executable_path, headless=True)
+    browser = Browser('chrome', **executable_path, headless=False)
 
     news_title, news_paragraph = mars_news(browser)
 
@@ -51,12 +51,12 @@ def mars_news(browser):
         news_title = slide_elem.find('div', class_='content_title').get_text()
 
         # Use the parent element to find the paragraph text
-        news_p = slide_elem.find('div', class_='article_teaser_body').get_text()
+        news_paragraph = slide_elem.find('div', class_='article_teaser_body').get_text()
     
     except AttributeError:
         return None, None
         
-    return news_title, news_p    
+    return news_title, news_paragraph    
 
 # Create function
 def featured_image(browser):
@@ -100,8 +100,8 @@ def mars_facts():
       return None
 
     # Assign columns and set index of dataframe
-    df.columns=['description', 'Mars', 'Earth']
-    df.set_index('description', inplace=True)
+    df.columns=['Description', 'Mars', 'Earth']
+    df.set_index('Description', inplace=True)
 
     # Convert dataframe into HTML format, add bootstrap
     return df.to_html()
