@@ -21,8 +21,8 @@ def index():
 def scrape():
    mars = mongo.db.mars
    mars_data = scraping.scrape_all()
-   mars.update({}, mars_data, upsert=True) # pymongo 3.12.3  
-   # mars.update_many({}, {"$set":mars_data}, upsert=True) # pymongo 4.0.1
+   mars.update_many({}, {"$set":mars_data}, upsert=True) # pymongo 4.0.1
+   # mars.update({}, mars_data, upsert=True) # pymongo 3.12.3
    return redirect('/', code=302)
  
 # Define main behavior
