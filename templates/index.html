@@ -14,7 +14,7 @@
     <div class="container">
       <!-- Add Jumbotron to Header -->
       <div class="jumbotron text-center" style="background-image: url(https://cdn.wionews.com/sites/default/files/styles/story_page/public/2021/04/08/190606-untitled-design-11.jpg);">
-        <h1>Mission to Mars</h1>
+        <h1 style="color: white">Mission to Mars</h1>
         <!-- Add a button to activate scraping script -->
         <p><a class="btn btn-primary btn-lg" href="/scrape" role="button" style="background-color: black; border: none; color: white;">Scrape New Data</a></p>
       </div>
@@ -49,9 +49,7 @@
           <!-- Mars Facts -->
           <div class="row" id="mars-facts">
             <h4 style="color: white">Mars Facts</h4>
-            <table class="dataframe table borderless" style="color: white">
-            {{ mars.facts | safe }}
-            </table>
+            <table class="dataframe table borderless" style="color: white" margin-left=auto margin-right=auto>{{ mars.facts | safe }}</table>
           </div>
         </div>
       </div>
